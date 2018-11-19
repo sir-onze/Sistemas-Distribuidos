@@ -18,15 +18,14 @@ public class Guiao4 {
         c.join();
         p.join();
 
-        final long endTime = System.currentTimeMillis();
+        long endTime = System.currentTimeMillis();
         System.out.println("Total execution time in ms: " + (endTime - startTime));
 
 
-        /*
+/*
         // descobrir o numero otimo de produtores e consumidores
 
         int N=10;
-        Thread t [] = new Thread[N];
         int tc =500;
         int tp=500;
         int total_ops=100;
@@ -36,35 +35,39 @@ public class Guiao4 {
         for (P=1;P<=9;P++){
 
             C=N-P;
+            Thread ps[]= new Thread[P];
+            Thread cs[]= new Thread[C];
+            BoundedBuffer b = new BoundedBuffer(N);
 
         for(int i=0;i<P;i++){
-            //criar os produtores
+            ps[i] = new Thread(new Produtor(b));
              }
 
              for(int i=0;i<C;i++){
-                //crirar os consumidores
+                 cs[i] = new Thread(new Produtor(b));
             }
             //iniciar o cronometro
-            long startTime = System.currentTimeMillis();
+            long startTime2 = System.currentTimeMillis();
 
             for(int i=0;i<P;i++){
-                //iniciar os produtores
+                ps[i].start();
             }
 
              for(int i=0;i<C;i++){
-                //iniciar os consumidores
+                cs[i].start();
                  }
 
             for(int i=0;i<P;i++){
-                //esperar pelos produtores
+               ps[i].wait();
             }
             for(int i=0;i<C;i++){
-                //esperar pelos consumidores
+                cs[i].wait();
             }
 
-            long endTime = System.currentTimeMillis();
+            endTime = System.currentTimeMillis()/1000;
         }
     }
-    */
+*/
     }
+
 }
